@@ -1,0 +1,61 @@
+#version 130
+
+ in vec3 vertexPosition;
+ in vec3 vertexNormal;
+
+
+
+//out vec3 aCor; //envia aCor pra fp
+out vec3 aCor; //envia aCor pra fp
+
+
+//uniform vec3 eyePositionWorld;
+uniform mat4 fullTransformationMatrix;
+
+
+
+
+//uniform vec3 lightPosition;
+
+void main(){
+  //gl_Position.xyz = vertexPosition;
+  //gl_Position.w = 1.0;
+  //or gl_Position =  vec4(vec3, 1.0);
+  
+
+  vec4 v = vec4(vertexPosition,1.0);
+  gl_Position = fullTransformationMatrix *  v;
+
+
+ //AMBIENTE
+  aCor =  vec3(1.0,0.0,1.0);
+
+  //Difusa
+  //vec3 lightVector = normalize(lightPosition - vertexPosition);
+  //aCor = vec3(1.0,0.5,1.0) * dot(lightVector, vertexNormal);
+
+
+  //Difusa 2
+  //vec3 lightVector = normalize(lightPosition - vertexPosition);
+  //float brightness = dot(lightVector, vertexNormal);
+  //aCor=vec4(brightness,brightness,brightness,1);
+
+  
+  //Difusa 3
+  //vec3 lightVector = normalize(lightPosition - vertexPosition);
+  //float brightness = dot(lightVector, vertexPosition );    //vertexPosition
+  //vec4 diffuseLight = vec4(brightness,brightness,brightness,1.0);
+
+
+  //Specular
+  //vec3 reflectedLightVectorWorld = reflect (-lightVector,vertexPosition); //calcula o vetor R utilizando o normal no ponto + o vetor da posição da luz 
+  //vec3 eyeVectorWorld = normalize(eyePositionWorld - vertexPosition);     // calcula o vetor E                       
+  //float s = dot(reflectedLightVectorWorld,eyeVectorWorld);  // calcula a especularidade
+  //s=pow(s,1.0);                                             //coeficiente especular
+  //vec4 specularLight = vec4(s,s,s,1);                       
+
+  //aCor=ambientLight + clamp(diffuseLight,0,1) + clamp(specularLight,0,1);
+
+
+
+}

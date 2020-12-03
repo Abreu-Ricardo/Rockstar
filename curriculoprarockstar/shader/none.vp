@@ -1,0 +1,29 @@
+#version 130
+
+ in vec3 vertexPosition;
+ in vec3 vertexNormal;
+
+
+out vec3 aCor; //envia aCor pra fp
+
+//uniform mat4 rotationMatrix;
+//uniform mat4 projection;
+//uniform mat4 view;
+uniform mat4 fullTransformationMatrix;
+
+void main(){
+  //gl_Position.xyz = vertexPosition;
+  //gl_Position.w = 1.0;
+  //or gl_Position =  vec4(vec3, 1.0);
+  
+
+  vec4 v = vec4(vertexPosition,1.0);
+  gl_Position = fullTransformationMatrix *  v;
+
+  aCor = vec3(1.0,0.0,1.0);
+  
+
+
+
+
+}

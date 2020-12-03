@@ -1,0 +1,5 @@
+add_shape sphere cube1
+rotate cube1 45 1 1 1
+add_light luz1 1.0 1.0 1.0
+reflection_on specular 0.5
+
